@@ -18,7 +18,7 @@ public class Exercise {
      * @param number sum number
      * @param a array to fill with numbers
      * @param len array length
-     * @param s number shift
+     * @param s minimum
      */
     public static void combinations(int number , int[] a, int len , int s)
     {
