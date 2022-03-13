@@ -1,42 +1,35 @@
 package domain;
 
 /**
- * The class provides the functionality to find all possible combinations for a 10 rung stair
+ * The class provides the functionality to calculate string equation
  */
 public class Exercise {
-    public static int combinationsNumber = 0;
-
-    public static int Calculate(){
-        int[] numbers = new int[10];
-        combinations(10, numbers, 0, 1);
-
-        return combinationsNumber;
-    }
-
     /**
-     * Performs iteration over all possible combinations
-     * @param number sum number
-     * @param a array to fill with numbers
-     * @param len array length
-     * @param s minimum
+     * Performs calculation
      */
-    public static void combinations(int number , int[] a, int len , int s)
-    {
-        if(number <= 0)
-        {
-            for( int j = 0 ; j < len ; j++ ) {
-                //System.out.print(a[j] + " ");
+    public static float calculate(char []equation){
+        float result = 0f;
+        String fragment = "";
+        char operation = '+';
+
+        for (char c : equation) {
+            if (c == ' ') {
+                continue;
             }
-            //System.out.println();
-            combinationsNumber++;
-
-            return;
+            if (c >= '0' && c <= '9') {
+                fragment += c;
+            }
+            if(c == '+' || c == '-' || c == '*' || c == '/' || equation[equation.length - 1] == c) {
+                switch (operation) {
+                    case '+' -> result += Integer.parseInt(fragment);
+                    case '-' -> result -= Integer.parseInt(fragment);
+                    case '*' -> result *= Integer.parseInt(fragment);
+                    case '/' -> result /= Integer.parseInt(fragment);
+                }
+                fragment = "";
+                operation = c;
+            }
         }
-
-        for(int i = s ; i <= number ; i++)
-        {
-            a[len] = i;
-            combinations( number - i , a , len + 1 , i );
-        }
+        return result;
     }
 }
