@@ -2,8 +2,12 @@ package test;
 
 import domain.Exercise;
 
+import java.util.Arrays;
+
 public class TestResult {
+
     public static void main(String[] args) {
-        System.out.println("Комбінацій для підіймання по сходах: " + Exercise.Calculate());
+        char[] equation = "1 + 33-4 * 7".toCharArray();
+        System.out.println(Arrays.toString(equation) + " = " + Exercise.calculate(equation));
     }
 }
